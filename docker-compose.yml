@@ -1,0 +1,37 @@
+version: '3'
+services:
+  app:
+    build: .
+    ports:
+      - "3003:3003"  # Mở cổng 3001 từ container ra máy chủ
+    environment:
+      MONGO_URL_DEV: mongodb+srv://hunhminhtam:123456mpHMT@cluster0.daghv.mongodb.net/swp
+      HOST: localhost
+      DEV_KEY: KAMEHAME
+      PORT: 3003
+      SOCKETPORT: 3003
+      DATABASE_URL: postgresql://root:exevipvl@34.81.244.146:5432/exe201
+      CLOUDINARY_NAME: degkw1mba
+      CLOUNDINARY_API_KEY: 257699947392487
+      CLOUNDINARY_SECRECT_KEY: _P8mCvgBCwYLD_WPmp_9zqHWiGg
+
+    volumes:
+      - .:/app  # Mount thư mục hiện tại vào thư mục /app trong container để có thể chỉnh sửa trực tiếp
+    networks:
+      - app_network
+
+  # Nếu bạn có thêm các dịch vụ khác, ví dụ như database, Redis, thì có thể thêm ở đây
+  # db:
+  #   image: postgres:latest
+  #   environment:
+  #     POSTGRES_USER: root
+  #     POSTGRES_PASSWORD: exevipvl
+  #     POSTGRES_DB: exe201
+  #   ports:
+  #     - "5432:5432"
+  #   networks:
+  #     - app_network
+
+networks:
+  app_network:
+    driver: bridge
